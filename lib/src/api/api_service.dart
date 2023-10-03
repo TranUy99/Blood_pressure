@@ -3,7 +3,9 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../core/model/user.dart';
 import '../core/remote/request/login_request/login_request.dart';
+import '../core/remote/request/register_request/sign_up_request.dart';
 import '../core/remote/response/login_reponse/login_response.dart';
+import '../core/remote/response/register_reponse/sign_up_response.dart';
 
 part 'api_service.g.dart';
 
@@ -34,6 +36,6 @@ abstract class ApiService {
   Future<LoginResponse> login(@Body() LoginRequest login);
 
   // //Register new customer
-  // @POST('/user/')
-  // Future<SignUpResponse> register(@Body() SignUpRequest register);
+  @POST('/register')
+  Future<SignUpResponse> register(@Body() SignUpRequest register);
 }

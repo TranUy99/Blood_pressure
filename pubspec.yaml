@@ -67,7 +67,6 @@ dependencies:
   hive: any
   hive_flutter: any
   flutter_spinbox: ^0.13.1
-  flutter_gen: ^5.3.2
   
 dev_dependencies:
   flutter_test:

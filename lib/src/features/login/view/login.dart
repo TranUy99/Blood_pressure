@@ -4,10 +4,14 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../../../main.dart';
 import '../../../constant/color/color.dart';
+import '../../component/primary_button.dart';
+import '../../home_page/view/navigation_home_page.dart';
+import '../../sign_up/view/sign_up.dart';
 import '../bloc/login_bloc.dart';
 import '../view_model/login_view_model.dart';
 import '../widget/login_form.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({Key? key}) : super(key: key);
