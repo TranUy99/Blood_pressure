@@ -9,30 +9,21 @@ class LoginResponse {
   @JsonKey(name: 'token')
   final String? token;
 
-  @JsonKey(name: 'user')
+  @JsonKey(name: 'idUser')
   final int? idUser;
-
-  @JsonKey(name: 'type')
-  final String? type;
 
   @JsonKey(name: 'message')
   final String? message;
 
   @JsonKey(name: 'errCode')
-  final String? error;
+  final int? errCode;
 
-  @JsonKey(name: 'email')
-  final String? email;
+ 
 
-  @JsonKey(name: 'role')
-  final String? role;
-
-  LoginResponse(this.error, {
-    this.role,
+  LoginResponse({
     this.message,
     this.token,
-    this.type,
-    this.email,
+    this.errCode,
     this.idUser,
   });
 

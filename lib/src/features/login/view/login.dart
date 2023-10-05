@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -38,7 +40,7 @@ class _LogInScreenState extends State<LogInScreen> {
     super.initState();
     _loginViewModel = LoginViewModel();
     isRemember = getUser.isRemember ?? false;
-    if(isRemember){
+    if (isRemember) {
       textEmailController.text = getUser.email ?? '';
       textPasswordController.text = getUser.password ?? '';
     }
@@ -58,19 +60,16 @@ class _LogInScreenState extends State<LogInScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05),
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.05),
             child: Column(
               children: [
                 Padding(
-                    padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.04),
-                    child: Text(
-                        AppLocalizations.of(context)!.logIn.toUpperCase(),
-                        style: const TextStyle(color: kBlueColor, fontSize: 32, fontWeight: FontWeight.w700))),
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.04),
+                    child: Text(AppLocalizations.of(context)!.logIn.toUpperCase(),
+                        style: const TextStyle(
+                            color: kBlueColor, fontSize: 32, fontWeight: FontWeight.w700))),
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.03),
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.03),
                   child: Column(children: [
                     BuildInputFormLogIn(
                       hint: 'Email',
@@ -85,8 +84,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   ]),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.02),
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.02),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -114,42 +112,32 @@ class _LogInScreenState extends State<LogInScreen> {
                     ],
                   ),
                 ),
-
                 Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.03),
+                  padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.03),
                   child: InkWell(
                     onTap: () async {
-                      
                       String email = textEmailController.text;
                       String password = textPasswordController.text;
-                   
-                      final int? loginStatus = await _loginViewModel.login(
-                          email, password, isRemember);
 
+                      final int? loginStatus =
+                          await _loginViewModel.login(email, password, isRemember);
+                     
                       if (email.isNotEmpty && password.isNotEmpty) {
                         if (loginStatus == LoginStatusEnum.successLogin.index) {
-                          showTopSnackBar(
-                              Overlay.of(context),
-                              const CustomSnackBar.success(
-                                  message: 'Login success'));
+                          showTopSnackBar(Overlay.of(context),
+                              const CustomSnackBar.success(message: 'Login success'));
                           indexScreen = 0;
                           navigationHomePage();
                         } else {
-                          showTopSnackBar(
-                              Overlay.of(context),
-                              const CustomSnackBar.error(
-                                  message: 'Login failed'));
+                          showTopSnackBar(Overlay.of(context),
+                              const CustomSnackBar.error(message: 'Login failed'));
                         }
                       } else {
-                        showTopSnackBar(
-                            Overlay.of(context),
-                            const CustomSnackBar.error(
-                                message: 'Please fill in all fields'));
+                        showTopSnackBar(Overlay.of(context),
+                            const CustomSnackBar.error(message: 'Please fill in all fields'));
                       }
                     },
-                    child: PrimaryButton(
-                        buttonText: AppLocalizations.of(context)!.logIn),
+                    child: PrimaryButton(buttonText: AppLocalizations.of(context)!.logIn),
                   ),
                 ),
                 Padding(
@@ -170,8 +158,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             ),
                           ),
                           Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Text(
                               AppLocalizations.of(context)!.or,
                               style: subtitle.copyWith(
@@ -188,10 +175,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                         ],
                       ),
-                   
-                   
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01),
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -205,9 +189,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignUpScreen()));
+                                  context, MaterialPageRoute(builder: (context) => SignUpScreen()));
                             },
                             child: Text(
                               AppLocalizations.of(context)!.signUp,
@@ -253,11 +235,8 @@ class _LogInScreenState extends State<LogInScreen> {
         width: MediaQuery.of(context).devicePixelRatio * 7,
         height: MediaQuery.of(context).devicePixelRatio * 7,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: kBlueBlandColor)),
-        child: isRemember
-            ? const Icon(Icons.check, size: 17, color:kBlueBlandColor)
-            : null,
+            borderRadius: BorderRadius.circular(4), border: Border.all(color: kBlueBlandColor)),
+        child: isRemember ? const Icon(Icons.check, size: 17, color: kBlueBlandColor) : null,
       ),
     );
   }

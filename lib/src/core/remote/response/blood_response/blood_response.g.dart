@@ -1,23 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_response.dart';
+part of 'blood_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
-    LoginResponse(
+BloodResponse _$BloodResponseFromJson(Map<String, dynamic> json) =>
+    BloodResponse(
       message: json['message'] as String?,
-      token: json['token'] as String?,
       errCode: json['errCode'] as int?,
-      idUser: json['idUser'] as int?,
     );
 
-Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
+Map<String, dynamic> _$BloodResponseToJson(BloodResponse instance) =>
     <String, dynamic>{
-      'token': instance.token,
-      'idUser': instance.idUser,
       'message': instance.message,
       'errCode': instance.errCode,
     };

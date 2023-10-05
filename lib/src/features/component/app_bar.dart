@@ -41,7 +41,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          (successLoginState.onLoginState && successLoginState.isVerified)
+          (successLoginState.onLoginState )
               ? SizedBox(
                   height: MediaQuery.of(context).orientation == Orientation.portrait
                       ? MediaQuery.of(context).size.height * 0.05
@@ -94,7 +94,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
 PreferredSizeWidget? appBarWidget(BuildContext context, bool isBack) {
   return PreferredSize(
-    preferredSize: (successLoginState.onLoginState && successLoginState.isVerified)
+    preferredSize: (successLoginState.onLoginState )
         ? MediaQuery.of(context).orientation == Orientation.portrait
             ? Size.fromHeight(MediaQuery.of(context).size.height * 0.2)
             : Size.fromHeight(MediaQuery.of(context).size.height * 0.35)

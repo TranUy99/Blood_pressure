@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constant/color/color.dart';
-import '../../measure/view/measure.dart';
+import '../../blood_pressure/view/measure.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});

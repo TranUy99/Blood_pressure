@@ -23,7 +23,7 @@ class SignUpBloc {
       try {
         final signUpResult =
             await SignUpService.signUpService(email, password, fullName);
-
+          
         if (signUpResult.message == null) {
           _signUpStateSubject.sink.add(SuccessSignUpState(true));
           getUser.email = email;

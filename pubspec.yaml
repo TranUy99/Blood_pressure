@@ -67,6 +67,7 @@ dependencies:
   hive: any
   hive_flutter: any
   flutter_spinbox: ^0.13.1
+  syncfusion_flutter_charts: ^23.1.39
   
 dev_dependencies:
   flutter_test:

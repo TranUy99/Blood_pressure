@@ -40,7 +40,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(successLoginState.isVerified);
+   
   }
 
   @override
@@ -49,7 +49,7 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
         _networkController.connectionType.value == "No Internet Connection";
     return checkInternetConnection == false
         ? Scaffold(
-            body: (successLoginState.onLoginState && successLoginState.isVerified)
+            body: (successLoginState.onLoginState )
                 ? navigationLoginScreen()[indexScreen]
                 : navigationLogoutScreen()[indexScreen],
             bottomNavigationBar: NavigationBar(

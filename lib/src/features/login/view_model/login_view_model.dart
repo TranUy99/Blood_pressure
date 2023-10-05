@@ -19,12 +19,10 @@ class LoginViewModel {
     await _loginBloc.state.listen(
       (state) {
         if (state is SuccessLoginState) {
-          if (successLoginState.isVerified) {
+          
             isLogin = LoginStatusEnum.successLogin.index;
         
-          } else {
-            isLogin = LoginStatusEnum.successLoginWithoutVerified.index;
-          }
+         
         } else if (state is ErrorLoginState) {
           isLogin = LoginStatusEnum.errorLogin.index;
         }

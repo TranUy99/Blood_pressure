@@ -1,5 +1,5 @@
-import 'package:blood_pressure/src/features/measure/view/blood.dart';
-import 'package:blood_pressure/src/features/measure/view/chart.dart';
+import 'package:blood_pressure/src/features/blood_pressure/view/blood.dart';
+import 'package:blood_pressure/src/features/blood_pressure/view/chart.dart';
 import 'package:flutter/material.dart';
 import '../../../constant/color/color.dart';
 

@@ -8,9 +8,9 @@ class InitialState extends LoginState {}
 //Success state login
 class SuccessLoginState extends LoginState {
   bool onLoginState = false;
-  bool isVerified = false;
 
-  SuccessLoginState(this.onLoginState, this.isVerified);
+
+  SuccessLoginState(this.onLoginState);
 
   //Save data login in shared preferences
   void saveLoginState(
@@ -18,7 +18,7 @@ class SuccessLoginState extends LoginState {
     SharedPreferences preferences = await SharedPreferences.getInstance();
      preferences.setString('email', email!);
     preferences.setString('token', token!);
-    preferences.setInt('user', id!);
+    preferences.setInt('id', id!);
     preferences.setString('password', password!);
     preferences.setBool('isRemember', isRemember!);
   }
