@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:blood_pressure/src/core/remote/request/blood_request/blood_request.dart';
 import 'package:blood_pressure/src/core/remote/response/blood_response/blood_response.dart';
 import 'package:blood_pressure/src/core/remote/response/doctor_response/doctor_response.dart';
+import 'package:blood_pressure/src/core/remote/response/schedule_response.dart/schedule_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../core/model/user.dart';
@@ -67,4 +68,11 @@ abstract class ApiService {
 
   @GET('/api/getDoctor')
   Future<DoctorResponse> getDoctor();
+
+    @GET('/api/scheduleDoctorId/{id}')
+  Future<ScheduleResponse> getSchedule({
+    @Query('workDate') required String? workDate,
+    @Path("id") required int? doctorId,
+  });
+
 }

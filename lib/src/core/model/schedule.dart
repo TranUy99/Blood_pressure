@@ -1,42 +1,34 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'doctor.g.dart';
+part 'schedule.g.dart';
 
 @JsonSerializable()
-class DoctorDTO {
+class ScheduleDTO {
   @JsonKey(name: 'id')
   final int? id;
 
-  @JsonKey(name: 'email')
-  final String? email;
+  @JsonKey(name: 'time')
+  final String? time;
 
- @JsonKey(name: 'fullName')
-  final String? fullName;
+ @JsonKey(name: 'workDate')
+  final String? workDate;
 
-   @JsonKey(name: 'address')
-  final String? address;  
+   @JsonKey(name: 'doctorId')
+  final int? doctorId;  
 
-  @JsonKey(name: 'gender')
-  final int? gender;
+  @JsonKey(name: 'statusId')
+  final int? statusId;
 
-
-  @JsonKey(name: 'phoneNumber')
-  final String? phoneNumber;
-
-  @JsonKey(name: 'image')
-  final String? image;
-
-  DoctorDTO({
+  ScheduleDTO({
     this.id,
-    this.email,
-    this.fullName,
-    this.address,
-    this.gender,
-    this.image,
-    this.phoneNumber
+    this.time,
+    this.workDate,
+    this.doctorId,
+    this.statusId,
+   
   });
 
-  factory DoctorDTO.fromJson(Map<String, dynamic> json) => _$DoctorDTOFromJson(json);
+  factory ScheduleDTO.fromJson(Map<String, dynamic> json) => _$ScheduleDTOFromJson(json);
 
-  Map<String, dynamic> toJson() => _$DoctorDTOToJson(this);
+  Map<String, dynamic> toJson() => _$ScheduleDTOToJson(this);
 }
