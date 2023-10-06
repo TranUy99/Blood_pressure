@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:blood_pressure/src/core/remote/request/blood_request/blood_request.dart';
 import 'package:blood_pressure/src/core/remote/response/blood_response/blood_response.dart';
+import 'package:blood_pressure/src/core/remote/response/doctor_response/doctor_response.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import '../core/model/user.dart';
@@ -63,4 +64,7 @@ abstract class ApiService {
     @Header("Authorization") required String? auth,
     @Path("id") required int? id,
   });
+
+  @GET('/api/getDoctor')
+  Future<DoctorResponse> getDoctor();
 }

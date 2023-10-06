@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../constant/color/color.dart';
 import '../../blood_pressure/view/measure.dart';
+import '../../doctor/view/doctor.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -64,10 +65,10 @@ class _MenuState extends State<Menu> {
               const SizedBox(width: 20,),
               InkWell(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => const Appointment(),),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Doctor(),),
+                  );
                 },
                 child: Container(
                   decoration: BoxDecoration(

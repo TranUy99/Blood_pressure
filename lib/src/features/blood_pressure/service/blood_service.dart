@@ -11,7 +11,6 @@ import '../../../core/remote/response/blood_response/get_blood_response.dart';
 class BloodService {
   static Future<BloodResponse> createBloodService(
       double? sys, double? dia, double? pulse, String? createDay) async {
-   
     BloodResponse createBloodService = await ApiService(dio.Dio()).createBlood(
       auth: 'Bearer ${getUser.token}',
       id: getUser.idUser,
@@ -26,9 +25,7 @@ class BloodService {
     return createBloodService;
   }
 
-    static Future<GetBloodResponse> getBlood(
-     ) async {
-   
+  static Future<GetBloodResponse> getBlood() async {
     GetBloodResponse getBlood = await ApiService(dio.Dio()).getBlood(
       auth: 'Bearer ${getUser.token}',
       id: getUser.idUser,
@@ -39,9 +36,7 @@ class BloodService {
     return getBlood;
   }
 
-     static Future<GetBloodResponse> getBloodReverse(
-     ) async {
-   
+  static Future<GetBloodResponse> getBloodReverse() async {
     GetBloodResponse getBloodReverse = await ApiService(dio.Dio()).getBloodReverse(
       auth: 'Bearer ${getUser.token}',
       id: getUser.idUser,

@@ -26,6 +26,7 @@ class _BloodPageState extends State<BloodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       backgroundColor: Color.fromARGB(255, 184, 242, 243),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -123,7 +124,7 @@ class _BloodPageState extends State<BloodPage> {
                           ),
                         );
                         // ignore: use_build_context_synchronously
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
