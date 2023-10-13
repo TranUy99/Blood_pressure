@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:developer';
 
 import 'package:blood_pressure/main.dart';
@@ -10,14 +12,22 @@ import '../../../core/remote/response/blood_response/get_blood_response.dart';
 
 class BloodService {
   static Future<BloodResponse> createBloodService(
-      double? sys, double? dia, double? pulse, String? createDay) async {
+      
+      double? SystolicPressure,
+      double? DiastolicPressure,
+      double? PulsePressure,
+      double? HeartRate,
+      double? BodyTemperature,
+      String? createDay) async {
     BloodResponse createBloodService = await ApiService(dio.Dio()).createBlood(
       auth: 'Bearer ${getUser.token}',
       id: getUser.idUser,
       createBlood: BloodRequest(
-        sys: sys,
-        dia: dia,
-        pulse: pulse,
+        SystolicPressure: SystolicPressure,
+        DiastolicPressure: DiastolicPressure,
+        PulsePressure: PulsePressure,
+        HeartRate: HeartRate,
+        BodyTemperature: BodyTemperature,
         createDay: createDay,
       ),
     );

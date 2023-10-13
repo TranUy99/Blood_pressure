@@ -1,5 +1,6 @@
 import 'package:blood_pressure/src/core/model/blood.dart';
 
+import '../../../core/remote/response/blood_response/blood_response.dart';
 import '../../../core/remote/response/blood_response/get_blood_response.dart';
 
 abstract class BloodState {}
@@ -10,9 +11,8 @@ class InitialState extends BloodState {
 
 //State for login success
 class SuccessBloodState extends BloodState {
-  final bool onLoginState;
-
-  SuccessBloodState(this.onLoginState);
+ final BloodResponse getBloodResponse;
+  SuccessBloodState(this.getBloodResponse);
 }
 
 //State for login failed

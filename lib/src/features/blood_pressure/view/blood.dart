@@ -1,3 +1,7 @@
+// ignore_for_file: non_constant_identifier_names, use_build_context_synchronously
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -5,6 +9,7 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../constant/color/color.dart';
 
+import '../../../core/remote/response/blood_response/blood_response.dart';
 import '../view_model/blood_view_model.dart';
 import '../widget/flolowBlood.dart';
 
@@ -17,16 +22,18 @@ class BloodPage extends StatefulWidget {
 
 class _BloodPageState extends State<BloodPage> {
   //  final BloodPageService bloodPageService = BloodPageService();
-  double sys = 70;
-  double dia = 60;
-  double pulse = 40;
+
+  double SystolicPressure = 70;
+  double DiastolicPressure = 60;
+  double PulsePressure = 40;
+  double HeartRate = 80;
+  double BodyTemperature = 36.1;
   final BloodViewModel _bloodViewModel = BloodViewModel();
   String? createDay = DateTime.now().toString();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       backgroundColor: Color.fromARGB(255, 184, 242, 243),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -67,12 +74,12 @@ class _BloodPageState extends State<BloodPage> {
                   padding: const EdgeInsets.all(10),
                   child: SpinBox(
                     max: 300,
-                    value: sys,
+                    value: SystolicPressure,
                     decimals: 1,
                     decoration: const InputDecoration(labelText: 'Systolic'),
                     onChanged: (value) {
                       setState(() {
-                        sys = value;
+                        SystolicPressure = value;
                       });
                     },
                   ),
@@ -81,13 +88,13 @@ class _BloodPageState extends State<BloodPage> {
                   padding: const EdgeInsets.all(10),
                   child: SpinBox(
                     max: 200,
-                    value: dia,
+                    value: DiastolicPressure,
                     min: 1,
                     decimals: 1,
                     decoration: const InputDecoration(labelText: 'Diastolic'),
                     onChanged: (value) {
                       setState(() {
-                        dia = value;
+                        DiastolicPressure = value;
                       });
                     },
                   ),
@@ -96,39 +103,42 @@ class _BloodPageState extends State<BloodPage> {
                   padding: const EdgeInsets.all(10),
                   child: SpinBox(
                     max: 250,
-                    value: pulse,
+                    value: PulsePressure,
                     min: 40,
                     decimals: 1,
                     decoration: const InputDecoration(labelText: 'Pulse'),
                     onChanged: (value) {
                       setState(() {
-                        pulse = value;
+                        PulsePressure = value;
                       });
                     },
                   ),
                 ),
                 InkWell(
                     onTap: () async {
-                      final bool signUpStatus = await _bloodViewModel.createBlood(
-                        sys,
-                        dia,
-                        pulse,
+                      final BloodResponse createBloodResponse = await _bloodViewModel.createBlood(
+                        SystolicPressure,
+                        DiastolicPressure,
+                        PulsePressure,
+                        HeartRate,
+                        BodyTemperature,
                         createDay,
                       );
 
-                      if (signUpStatus == true) {
+                      if (createBloodResponse.errCode == 0) {
                         showTopSnackBar(
                           Overlay.of(context),
                           const CustomSnackBar.success(
                             message: ' success',
                           ),
                         );
-                        // ignore: use_build_context_synchronously
+                      
+                       
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  FollowBloodPressure(sys: sys, dia: dia, pulse: pulse)),
+                                  FollowBloodPressure(id: createBloodResponse.bloodPressure!.id, )),
                         );
                       } else {
                         showTopSnackBar(
@@ -151,7 +161,6 @@ class _BloodPageState extends State<BloodPage> {
                         style: textButton.copyWith(color: kWhiteColor),
                       ),
                     )),
-             
               ],
             ),
           ),

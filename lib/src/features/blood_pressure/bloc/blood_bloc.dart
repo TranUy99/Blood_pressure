@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:async';
 import 'dart:developer';
 import 'package:rxdart/rxdart.dart';
@@ -15,15 +17,18 @@ class BloodBloc {
   //Get event and call api Blood
   Future<void> createBlood(BloodEvent event) async {
     if (event is BloodButtonPressedEvent) {
-      final sys = event.sys;
-      final dia = event.dia;
-      final pulse = event.pulse;
+      final SystolicPressure = event.SystolicPressure;
+      final DiastolicPressure = event.DiastolicPressure;
+      final PulsePressure = event.PulsePressure;
+      final HeartRate = event.HeartRate;
+      final BodyTemperature = event.BodyTemperature;
       final createDay = event.createDay;
 
       try {
-        final BloodResult = await BloodService.createBloodService(sys, dia, pulse, createDay);
+        final BloodResult = await BloodService.createBloodService(SystolicPressure,
+            DiastolicPressure, PulsePressure, HeartRate, BodyTemperature, createDay);
         if (BloodResult.errCode == 0) {
-          _BloodStateSubject.sink.add(SuccessBloodState(true));
+          _BloodStateSubject.sink.add(SuccessBloodState(BloodResult));
         } else {
           _BloodStateSubject.sink.add(ErrorBloodState("error"));
         }
@@ -47,8 +52,7 @@ class BloodBloc {
     }
   }
 
-
-    Future<void> getBloodReverse(FetchBloodEvent event) async {
+  Future<void> getBloodReverse(FetchBloodEvent event) async {
     try {
       final GetBloodResponse getBlood = await BloodService.getBloodReverse();
 

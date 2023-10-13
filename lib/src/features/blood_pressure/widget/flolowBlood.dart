@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class FollowBloodPressure extends StatefulWidget {
-  final double sys;
-  final double dia;
-  final double pulse;
+  final int? id;
+ 
   const FollowBloodPressure(
-      {Key? key, required this.sys, required this.dia, required this.pulse})
+      {Key? key, required this.id,})
       : super(key: key);
 
   @override

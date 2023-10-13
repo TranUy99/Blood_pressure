@@ -68,17 +68,27 @@ class _ChartPageState extends State<ChartPage> {
                 LineSeries(
                   dataSource: getBloodResponse.bloodPressure!,
                   xValueMapper: (BloodDTO chartdata, _) => parseday(chartdata.createDay),
-                  yValueMapper: (BloodDTO chartdata, _) => chartdata.sys,
+                  yValueMapper: (BloodDTO chartdata, _) => chartdata.SystolicPressure,
                 ),
                 LineSeries(
                   dataSource: getBloodResponse.bloodPressure!,
                   xValueMapper: (BloodDTO chartdata, _) => parseday(chartdata.createDay),
-                  yValueMapper: (BloodDTO chartdata, _) => chartdata.dia,
+                  yValueMapper: (BloodDTO chartdata, _) => chartdata.DiastolicPressure,
                 ),
                 LineSeries(
                   dataSource: getBloodResponse.bloodPressure!,
                   xValueMapper: (BloodDTO chartdata, _) => parseday(chartdata.createDay),
-                  yValueMapper: (BloodDTO chartdata, _) => chartdata.pulse,
+                  yValueMapper: (BloodDTO chartdata, _) => chartdata.PulsePressure,
+                ),
+                LineSeries(
+                  dataSource: getBloodResponse.bloodPressure!,
+                  xValueMapper: (BloodDTO chartdata, _) => parseday(chartdata.createDay),
+                  yValueMapper: (BloodDTO chartdata, _) => chartdata.HeartRate,
+                ),
+                LineSeries(
+                  dataSource: getBloodResponse.bloodPressure!,
+                  xValueMapper: (BloodDTO chartdata, _) => parseday(chartdata.createDay),
+                  yValueMapper: (BloodDTO chartdata, _) => chartdata.BodyTemperature,
                 )
               ],
             ),

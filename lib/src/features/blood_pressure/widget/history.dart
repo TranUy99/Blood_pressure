@@ -75,8 +75,10 @@ class _HistoryState extends State<History> {
                     style: const TextStyle(color: Color.fromARGB(255, 7, 7, 7), fontSize: 18),
                   ),
                   Text(
-                      'Blood Pressure:${getBloodResponse.bloodPressure![index].sys}/${getBloodResponse.bloodPressure![index].dia}'),
-                  Text('Pulse:${getBloodResponse.bloodPressure![index].pulse}'),
+                      'Blood Pressure:${getBloodResponse.bloodPressure![index].SystolicPressure}/${getBloodResponse.bloodPressure![index].DiastolicPressure}'),
+                  Text('Pulse:${getBloodResponse.bloodPressure![index].PulsePressure}'),
+                  Text('Heart Rate:${getBloodResponse.bloodPressure![index].HeartRate}'),
+                  Text('Body Temperature:${getBloodResponse.bloodPressure![index].BodyTemperature}'),
                 ],
               ),
             );

@@ -1,27 +1,38 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'blood_request.g.dart';
-
 //Send email, password to api
 @JsonSerializable()
 class BloodRequest {
   BloodRequest({
-    this.sys,
-    this.dia,
-    this.pulse,
-    this.createDay,
+   
+    this.SystolicPressure,
+    this.DiastolicPressure,
+    this.PulsePressure,
+    this.HeartRate,
+    this.BodyTemperature,
+     this.createDay,
   });
 
-  @JsonKey(name: 'sys')
-  final double? sys;
+  @JsonKey(name: 'SystolicPressure')
+  final double? SystolicPressure;
 
-  @JsonKey(name: 'dia')
-  final double? dia;
+  @JsonKey(name: 'DiastolicPressure')
+  final double? DiastolicPressure;
   
-    @JsonKey(name: 'pulse')
-  final double? pulse;
+  @JsonKey(name: 'PulsePressure')
+  final double? PulsePressure;
+
+   @JsonKey(name: 'HeartRate')
+  final double? HeartRate;
+
+  @JsonKey(name: 'BodyTemperature')
+
+  final double? BodyTemperature;
   
-    @JsonKey(name: 'createDay')
+  @JsonKey(name: 'createDay')
   final String? createDay;
 
   factory BloodRequest.fromJson(Map<String, dynamic> json) =>

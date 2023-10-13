@@ -7,16 +7,20 @@ part of 'blood_request.dart';
 // **************************************************************************
 
 BloodRequest _$BloodRequestFromJson(Map<String, dynamic> json) => BloodRequest(
-      sys: (json['sys'] as num?)?.toDouble(),
-      dia: (json['dia'] as num?)?.toDouble(),
-      pulse: (json['pulse'] as num?)?.toDouble(),
+      SystolicPressure: (json['SystolicPressure'] as num?)?.toDouble(),
+      DiastolicPressure: (json['DiastolicPressure'] as num?)?.toDouble(),
+      PulsePressure: (json['PulsePressure'] as num?)?.toDouble(),
+      HeartRate: (json['HeartRate'] as num?)?.toDouble(),
+      BodyTemperature: (json['BodyTemperature'] as num?)?.toDouble(),
       createDay: json['createDay'] as String?,
     );
 
 Map<String, dynamic> _$BloodRequestToJson(BloodRequest instance) =>
     <String, dynamic>{
-      'sys': instance.sys,
-      'dia': instance.dia,
-      'pulse': instance.pulse,
+      'SystolicPressure': instance.SystolicPressure,
+      'DiastolicPressure': instance.DiastolicPressure,
+      'PulsePressure': instance.PulsePressure,
+      'HeartRate': instance.HeartRate,
+      'BodyTemperature': instance.BodyTemperature,
       'createDay': instance.createDay,
     };

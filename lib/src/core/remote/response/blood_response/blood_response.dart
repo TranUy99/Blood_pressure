@@ -14,15 +14,15 @@ class BloodResponse {
   @JsonKey(name: 'errCode')
   final int? errCode;
 
-  // @JsonKey(name: 'bloodPressure')
-  // final List<BloodDTO>? bloodPressure;
+  @JsonKey(name: 'bloodPressure')
+  final BloodDTO? bloodPressure;
 
 
 
   BloodResponse({
     this.message,
     this.errCode,
-    // this.bloodPressure,
+    this.bloodPressure,
   });
 
   factory BloodResponse.fromJson(Map<String, dynamic> json) =>

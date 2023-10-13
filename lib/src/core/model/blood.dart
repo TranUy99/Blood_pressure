@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'blood.g.dart';
@@ -7,23 +9,34 @@ class BloodDTO {
   @JsonKey(name: 'id')
   final int? id;
 
-  @JsonKey(name: 'sys')
-  final int? sys;
+  @JsonKey(name: 'SystolicPressure')
+  final double? SystolicPressure;
 
-  @JsonKey(name: 'dia')
-  final int? dia;
+  @JsonKey(name: 'DiastolicPressure')
+  final double? DiastolicPressure;
 
- @JsonKey(name: 'pulse')
-  final int? pulse;
+ @JsonKey(name: 'PulsePressure')
+  final double? PulsePressure;
 
+ @JsonKey(name: 'HeartRate')
+  final double? HeartRate;
+
+  @JsonKey(name: 'BodyTemperature')
+  final double? BodyTemperature;
+
+  @JsonKey(name: 'Disease')
+  final String? Disease;
   @JsonKey(name: 'createDay')
   final String? createDay;
   BloodDTO({
   
     this.id,
-    this.sys,
-    this.dia,
-    this.pulse,
+    this.SystolicPressure,
+    this.DiastolicPressure,
+    this.PulsePressure,
+    this.HeartRate,
+    this.BodyTemperature,
+    this.Disease,
     this.createDay
    
   });

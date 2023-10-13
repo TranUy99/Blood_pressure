@@ -1,33 +1,45 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:async';
 import 'dart:developer';
 
 import 'package:blood_pressure/src/core/remote/response/blood_response/get_blood_response.dart';
 
+import '../../../core/remote/response/blood_response/blood_response.dart';
 import '../bloc/blood_bloc.dart';
 import '../bloc/blood_event.dart';
 import '../bloc/blood_state.dart';
 
 class BloodViewModel {
   final BloodBloc _bloodBloc = BloodBloc();
-
-  Future<bool> createBlood(double? sys, double? dia, double? pulse, String? createDay) async {
-    final BloodEvent =
-        BloodButtonPressedEvent(sys: sys, dia: dia, pulse: pulse, createDay: createDay);
+  late BloodResponse bloodResponse;
+  Future<BloodResponse> createBlood(double? SystolicPressure, double? DiastolicPressure,
+      double? PulsePressure, double? HeartRate, double? BodyTemperature, String? createDay) async {
+    final BloodEvent = BloodButtonPressedEvent(
+        SystolicPressure: SystolicPressure,
+        DiastolicPressure: DiastolicPressure,
+        PulsePressure: PulsePressure,
+        HeartRate: HeartRate,
+        BodyTemperature: BodyTemperature,
+        createDay: createDay);
     await _bloodBloc.createBlood(BloodEvent);
 
-    bool isBlood = false;
-
+    Completer<BloodResponse> completer = Completer<BloodResponse>();
+    StreamSubscription<BloodState>? subscription;
     await _bloodBloc.bloodStateStream.listen(
       (state) {
         if (state is SuccessBloodState) {
-          isBlood = true;
+          bloodResponse = state.getBloodResponse;
+          completer.complete(bloodResponse);
+          subscription!.cancel();
         } else if (state is ErrorBloodState) {
-          isBlood = false;
+          completer.completeError('Error fetching products');
+          subscription!.cancel();
         }
       },
     );
 
-    return isBlood;
+    return completer.future;
   }
 
   Future<GetBloodResponse> getBlood() async {
@@ -75,6 +87,7 @@ class BloodViewModel {
 
     return completer.future;
   }
+
   void dispose() {
     _bloodBloc.dispose();
   }
