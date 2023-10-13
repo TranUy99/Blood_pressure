@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-
 import '../../../constant/color/color.dart';
-
 import '../../../core/remote/response/blood_response/blood_response.dart';
 import '../view_model/blood_view_model.dart';
 import '../widget/flolowBlood.dart';
@@ -114,6 +112,35 @@ class _BloodPageState extends State<BloodPage> {
                     },
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SpinBox(
+                    max: 120, // Set an appropriate maximum value for HeartRate
+                    value: HeartRate,
+                    decimals: 1,
+                    decoration: const InputDecoration(labelText: 'Heart Rate'),
+                    onChanged: (value) {
+                      setState(() {
+                        HeartRate = value;
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SpinBox(
+                    max: 110, // Set an appropriate maximum value for BodyTemperature
+                    value: BodyTemperature,
+                    min: 35, // Set an appropriate minimum value for BodyTemperature
+                    decimals: 1,
+                    decoration: const InputDecoration(labelText: 'Body Temperature'),
+                    onChanged: (value) {
+                      setState(() {
+                        BodyTemperature = value;
+                      });
+                    },
+                  ),
+                ),
                 InkWell(
                     onTap: () async {
                       final BloodResponse createBloodResponse = await _bloodViewModel.createBlood(
@@ -132,13 +159,13 @@ class _BloodPageState extends State<BloodPage> {
                             message: ' success',
                           ),
                         );
-                      
-                       
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  FollowBloodPressure(id: createBloodResponse.bloodPressure!.id, )),
+                              builder: (context) => FollowBloodPressure(
+                                    id: createBloodResponse.bloodPressure!.id,
+                                  )),
                         );
                       } else {
                         showTopSnackBar(

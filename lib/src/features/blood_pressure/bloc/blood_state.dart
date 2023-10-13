@@ -34,3 +34,14 @@ class BloodErrorState extends BloodState {
   BloodErrorState(this.errorMessage);
 }
 
+class SuccessGetBloodByIdState extends BloodState {
+ final BloodResponse getBloodResponse;
+  SuccessGetBloodByIdState(this.getBloodResponse);
+}
+
+//State for login failed
+class ErrorGetBloodByIdState extends BloodState {
+  final String errorMessage;
+
+  ErrorGetBloodByIdState(this.errorMessage);
+}

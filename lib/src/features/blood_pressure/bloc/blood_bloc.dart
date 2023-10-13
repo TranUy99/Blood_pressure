@@ -2,8 +2,9 @@
 
 import 'dart:async';
 import 'dart:developer';
+import 'package:blood_pressure/src/core/remote/response/blood_response/blood_response.dart';
 import 'package:rxdart/rxdart.dart';
-import '../../../../main.dart';
+
 import '../../../core/remote/response/blood_response/get_blood_response.dart';
 import '../service/blood_service.dart';
 import 'blood_event.dart';
@@ -63,6 +64,22 @@ class BloodBloc {
       }
     } catch (e) {
       _BloodStateSubject.sink.add(BloodErrorState("No  available"));
+    }
+  }
+
+  Future<void> getBloodById(GetBloodById event) async {
+    final id = event.id;
+   
+    try {
+      final BloodResponse getBlood = await BloodService.getBloodById(id);
+     
+      if (getBlood.errCode == 0) {
+        _BloodStateSubject.sink.add(SuccessGetBloodByIdState(getBlood));
+      } else {
+        _BloodStateSubject.sink.add(ErrorGetBloodByIdState("No  available"));
+      }
+    } catch (e) {
+      _BloodStateSubject.sink.add(ErrorGetBloodByIdState("No  available"));
     }
   }
 

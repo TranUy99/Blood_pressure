@@ -58,7 +58,7 @@ abstract class ApiService {
     @Path("id") required int? id,
   });
 
-  @GET('/api/blood-pressure/{id}')
+  @GET('/api/blood-pressure/user/{id}')
   Future<GetBloodResponse> getBlood({
     @Query('no') required int? no,
     @Query('limit') required int? limit,
@@ -66,13 +66,17 @@ abstract class ApiService {
     @Path("id") required int? id,
   });
 
+  @GET('/api/blood-pressure/{id}')
+  Future<BloodResponse> getBloodById({
+    @Path("id") required int? id,
+  });
+
   @GET('/api/getDoctor')
   Future<DoctorResponse> getDoctor();
 
-    @GET('/api/scheduleDoctorId/{id}')
+  @GET('/api/scheduleDoctorId/{id}')
   Future<ScheduleResponse> getSchedule({
     @Query('workDate') required String? workDate,
     @Path("id") required int? doctorId,
   });
-
 }

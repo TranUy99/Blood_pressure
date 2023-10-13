@@ -22,3 +22,8 @@ class BloodButtonPressedEvent extends BloodEvent {
 }
 
 class FetchBloodEvent extends BloodEvent {}
+
+class GetBloodById extends BloodEvent {
+  final int? id;
+  GetBloodById({required this.id});
+}

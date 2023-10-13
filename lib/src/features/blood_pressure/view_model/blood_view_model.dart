@@ -3,16 +3,15 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:blood_pressure/src/core/remote/response/blood_response/get_blood_response.dart';
-
 import '../../../core/remote/response/blood_response/blood_response.dart';
+import '../../../core/remote/response/blood_response/get_blood_response.dart';
 import '../bloc/blood_bloc.dart';
 import '../bloc/blood_event.dart';
 import '../bloc/blood_state.dart';
 
 class BloodViewModel {
   final BloodBloc _bloodBloc = BloodBloc();
-  late BloodResponse bloodResponse;
+
   Future<BloodResponse> createBlood(double? SystolicPressure, double? DiastolicPressure,
       double? PulsePressure, double? HeartRate, double? BodyTemperature, String? createDay) async {
     final BloodEvent = BloodButtonPressedEvent(
@@ -24,17 +23,17 @@ class BloodViewModel {
         createDay: createDay);
     await _bloodBloc.createBlood(BloodEvent);
 
-    Completer<BloodResponse> completer = Completer<BloodResponse>();
     StreamSubscription<BloodState>? subscription;
-    await _bloodBloc.bloodStateStream.listen(
+    final completer = Completer<BloodResponse>();
+
+    subscription = _bloodBloc.bloodStateStream.listen(
       (state) {
         if (state is SuccessBloodState) {
-          bloodResponse = state.getBloodResponse;
-          completer.complete(bloodResponse);
-          subscription!.cancel();
+          completer.complete(state.getBloodResponse);
+          subscription?.cancel();
         } else if (state is ErrorBloodState) {
           completer.completeError('Error fetching products');
-          subscription!.cancel();
+          subscription?.cancel();
         }
       },
     );
@@ -80,6 +79,30 @@ class BloodViewModel {
         completer.complete(getBloodResponse);
         subscription!.cancel(); // Hủy lắng nghe sau khi nhận được danh sách sản phẩm
       } else if (state is BloodErrorState) {
+        completer.completeError('Error fetching products');
+        subscription!.cancel();
+      }
+    });
+
+    return completer.future;
+  }
+
+  Future<BloodResponse> getBloodById(int? id) async {
+    
+    final getBloodById = GetBloodById(id: id);
+    BloodResponse bloodResponse;
+
+    Completer<BloodResponse> completer = Completer<BloodResponse>();
+
+    await _bloodBloc.getBloodById(getBloodById);
+
+    StreamSubscription<BloodState>? subscription;
+    subscription = _bloodBloc.bloodStateStream.listen((state) {
+      if (state is SuccessGetBloodByIdState) {
+        bloodResponse = state.getBloodResponse;
+        completer.complete(bloodResponse);
+        subscription!.cancel(); // Hủy lắng nghe sau khi nhận được danh sách sản phẩm
+      } else if (state is ErrorGetBloodByIdState) {
         completer.completeError('Error fetching products');
         subscription!.cancel();
       }

@@ -209,7 +209,7 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
                               child: InkWell(
                                 onTap: () async {
                                   final int? scheduleId = selectedScheduleId;
-                                  log("scheduleId $scheduleId");
+
                                 },
                                 child: Container(
                                   alignment: Alignment.center,

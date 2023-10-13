@@ -12,7 +12,6 @@ import '../../../core/remote/response/blood_response/get_blood_response.dart';
 
 class BloodService {
   static Future<BloodResponse> createBloodService(
-      
       double? SystolicPressure,
       double? DiastolicPressure,
       double? PulsePressure,
@@ -52,6 +51,15 @@ class BloodService {
       id: getUser.idUser,
       no: 0,
       limit: 20,
+    );
+
+    return getBloodReverse;
+  }
+
+  static Future<BloodResponse> getBloodById(int? id) async {
+ 
+    BloodResponse getBloodReverse = await ApiService(dio.Dio()).getBloodById(
+      id: id,
     );
 
     return getBloodReverse;
