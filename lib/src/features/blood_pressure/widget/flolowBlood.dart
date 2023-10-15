@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../../constant/color/color.dart';
 import '../../../core/remote/response/blood_response/blood_response.dart';
+import '../../component/app_bar.dart';
+import '../../component/custom_app_bar.dart';
 import '../view_model/blood_view_model.dart';
 
 class FollowBloodPressure extends StatefulWidget {
@@ -60,31 +62,8 @@ class _FollowBloodPressureState extends State<FollowBloodPressure> {
 
   Widget buildUI(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Diagnostic'),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [kWhiteColor, kDarkGreyColor, kZambeziColor],
-            ),
-            color: kDarkGreyColor,
-            boxShadow: const [BoxShadow(blurRadius: 50.0)],
-            borderRadius: BorderRadius.vertical(
-                bottom: Radius.elliptical(MediaQuery.of(context).size.width, 18)),
-          ),
-        ),
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-        ),
-      ),
+      appBar: appBar(context, 'Diagnostic'),
+
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

@@ -1,9 +1,11 @@
 import 'package:blood_pressure/src/features/home_page/view/home_page.dart';
+import 'package:blood_pressure/src/features/profile/view/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../constant/color/color.dart';
 import '../../../core/network/network_manager.dart';
+import '../../conversation/view/conversation.dart';
 import '../../login/bloc/login_bloc.dart';
 import '../../login/view/not_login.dart';
 
@@ -27,8 +29,8 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
   List navigationLoginScreen() {
     return appScreens = [
       const HomePage(),
-      // const CartPage(),
-      // const ProfilePage()
+      const Conversation(),
+      const Profile()
     ];
   }
 
@@ -71,10 +73,10 @@ class _NavigationHomePageState extends State<NavigationHomePage> {
                   ),
                 ),
                 NavigationDestination(
-                  icon: Icon(Icons.shopping_cart_outlined, size: 35),
-                  label: 'Cart',
+                  icon: Icon(Icons.chat_bubble_outline, size: 35),
+                  label: 'Conversation',
                   selectedIcon: Icon(
-                    Icons.shopping_cart,
+                    Icons.chat_bubble,
                     size: 35,
                     color: kGreyColor,
                   ),
