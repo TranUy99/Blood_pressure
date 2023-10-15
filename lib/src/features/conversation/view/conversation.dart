@@ -1,6 +1,6 @@
 import 'package:blood_pressure/src/features/conversation/view/call.dart';
 import 'package:blood_pressure/src/features/conversation/view/camera.dart';
-import 'package:blood_pressure/src/features/conversation/view/chat.dart';
+import 'package:blood_pressure/src/features/chat/view/chat.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant/color/color.dart';
@@ -27,15 +27,7 @@ class Conversation extends StatelessWidget {
                   bottom: Radius.elliptical(MediaQuery.of(context).size.width, 20)),
             ),
           ),
-          leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-          ),
+      
           title: const Text('Chat with doctor'),
           backgroundColor: Color.fromARGB(117, 100, 193, 234),
           bottom: const TabBar(

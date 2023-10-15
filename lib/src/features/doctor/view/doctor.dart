@@ -2,7 +2,7 @@ import 'package:blood_pressure/src/constant/color/color.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/remote/response/doctor_response/doctor_response.dart';
-import '../../component/app_bar.dart';
+import '../../../constant/component/app_bar.dart';
 import '../view_model/doctor_view_model.dart';
 import 'doctor_detail.dart';
 

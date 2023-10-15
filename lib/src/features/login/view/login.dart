@@ -6,7 +6,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../../../main.dart';
 import '../../../constant/color/color.dart';
-import '../../component/primary_button.dart';
+import '../../../constant/component/primary_button.dart';
 import '../../home_page/view/navigation_home_page.dart';
 import '../../sign_up/view/sign_up.dart';
 import '../bloc/login_bloc.dart';

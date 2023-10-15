@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constant/color/color.dart';
+import '../color/color.dart';
 
 PreferredSizeWidget? appBar(BuildContext context, String title) {
   return PreferredSize(

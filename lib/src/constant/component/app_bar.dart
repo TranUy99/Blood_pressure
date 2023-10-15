@@ -6,10 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../languages/language.dart';
 import '../../../languages/language_contanst.dart';
 import '../../../main.dart';
-import '../../constant/color/color.dart';
+import '../color/color.dart';
 
-import '../home_page/view/navigation_home_page.dart';
-import '../login/bloc/login_bloc.dart';
+import '../../features/home_page/view/navigation_home_page.dart';
+import '../../features/login/bloc/login_bloc.dart';
 
 class CustomAppBar extends StatefulWidget {
   const CustomAppBar({super.key});

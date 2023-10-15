@@ -33,7 +33,7 @@ class _ChatState extends State<Chat> {
               // Build UI using the retrieved products
               return buildUI(context);
             } else {
-              return Text("no");
+              return const Text("no");
             }
           }
         },
@@ -76,7 +76,7 @@ class _ChatState extends State<Chat> {
                               ),
                               title: Text(
                                 "${doctorResponse.doctors![index].fullName} ",
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               subtitle: const Row(
                                 children: [
@@ -90,7 +90,7 @@ class _ChatState extends State<Chat> {
                                   )
                                 ],
                               ),
-                              trailing: Text("16:00"),
+                              trailing: const Text("16:00"),
                             ),
                           ],
                         ),
@@ -99,7 +99,7 @@ class _ChatState extends State<Chat> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ChatPage()),
+                              builder: (context) =>  ChatPage(doctorId: doctorResponse.doctors![index].id,)),
                         );
                       },
                     ),

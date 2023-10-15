@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-import '../../component/primary_button.dart';
+import '../../../constant/component/primary_button.dart';
 import 'login.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

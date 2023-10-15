@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../component/app_bar.dart';
+import '../../../constant/component/app_bar.dart';
 import 'carousel_slider.dart';
 import 'menu.dart';
 
