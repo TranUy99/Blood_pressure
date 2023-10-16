@@ -1,19 +1,25 @@
 import 'dart:developer';
 
 import 'package:blood_pressure/src/constant/color/color.dart';
+import 'package:blood_pressure/src/core/remote/response/booking_response/create_booking_reponse.dart';
 import 'package:blood_pressure/src/core/remote/response/schedule_response.dart/schedule_response.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:intl/intl.dart';
-import '../view_model/doctor_view_model.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import '../../doctor/view_model/doctor_view_model.dart';
+import '../../home_page/view/navigation_home_page.dart';
+import '../view_model/booking_view_model.dart';
 
-class DoctorDetailPage extends StatefulWidget {
+class MakeAppointment extends StatefulWidget {
   final int? doctorId;
   final String? doctorName;
   final String? address;
   final String? phoneNumber;
   // final String isAvailable;
-  const DoctorDetailPage({
+  const MakeAppointment({
     super.key,
     required this.doctorId,
     required this.doctorName,
@@ -23,12 +29,12 @@ class DoctorDetailPage extends StatefulWidget {
   });
 
   @override
-  State<DoctorDetailPage> createState() => _DoctorDetailPageState();
+  State<MakeAppointment> createState() => _MakeAppointmentState();
 }
 
-class _DoctorDetailPageState extends State<DoctorDetailPage> {
+class _MakeAppointmentState extends State<MakeAppointment> {
   DoctorViewModel _doctorViewModel = DoctorViewModel();
-
+  BookingViewModel _bookingViewModel = BookingViewModel();
   String workDate = DateFormat("dd/MM/yyyy").format(DateTime.now());
   void _shoDataPicker() {
     showDatePicker(
@@ -43,6 +49,7 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
     });
   }
 
+  String? createDay = DateTime.now().toString();
   var time;
   int? selectedScheduleId;
   var selectedCard = -1;
@@ -208,8 +215,28 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
                             Center(
                               child: InkWell(
                                 onTap: () async {
-                                  final int? scheduleId = selectedScheduleId;
-
+                                  final CreateBookingResponse result = await _bookingViewModel
+                                      .createBooking(selectedScheduleId, createDay);
+                                  log("result $result");
+                                  if (result.errCode == 0) {
+                                    showTopSnackBar(
+                                      Overlay.of(context),
+                                      const CustomSnackBar.success(
+                                        message: ' success',
+                                      ),
+                                    );
+                                    indexScreen = 0;
+                                    Get.offAll(const NavigationHomePage());
+                               
+                                  } else {
+                                    showTopSnackBar(
+                                      Overlay.of(context),
+                                      const CustomSnackBar.error(
+                                        message: 'Failed',
+                                        backgroundColor: Colors.red,
+                                      ),
+                                    );
+                                  }
                                 },
                                 child: Container(
                                   alignment: Alignment.center,

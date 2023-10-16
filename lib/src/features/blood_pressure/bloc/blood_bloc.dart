@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:async';
-import 'dart:developer';
+
 import 'package:blood_pressure/src/core/remote/response/blood_response/blood_response.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -41,7 +41,7 @@ class BloodBloc {
 
   Future<void> getBlood(FetchBloodEvent event) async {
     try {
-      final GetBloodResponse getBlood = await BloodService.getBlood();
+      final  getBlood = await BloodService.getBlood();
 
       if (getBlood.errCode == 0) {
         _BloodStateSubject.sink.add(BloodLoadedState(getBlood));

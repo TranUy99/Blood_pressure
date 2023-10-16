@@ -1,7 +1,5 @@
 // ignore_for_file: non_constant_identifier_names, use_build_context_synchronously
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';

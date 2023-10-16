@@ -51,7 +51,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("${getUser.email}" ?? ''),
+                        Text("${getUser.email}" ),
                         TextButton(
                             onPressed: () async {
                               SharedPreferences preferences = await SharedPreferences.getInstance();

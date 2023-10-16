@@ -1,4 +1,4 @@
-import 'package:blood_pressure/src/core/model/blood.dart';
+
 
 import '../../../core/remote/response/blood_response/blood_response.dart';
 import '../../../core/remote/response/blood_response/get_blood_response.dart';

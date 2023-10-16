@@ -2,9 +2,9 @@ import 'package:blood_pressure/src/constant/color/color.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/remote/response/doctor_response/doctor_response.dart';
-import '../../../constant/component/app_bar.dart';
+
 import '../view_model/doctor_view_model.dart';
-import 'doctor_detail.dart';
+import '../../appointment/view/make_appointment.dart';
 
 class Doctor extends StatefulWidget {
   const Doctor({super.key});
@@ -155,7 +155,7 @@ class _DoctorState extends State<Doctor> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => DoctorDetailPage(
+                              builder: (context) => MakeAppointment(
                                     doctorId: doctorResponse.doctors![index].id,
                                     doctorName: doctorResponse.doctors![index].fullName!,
                                     address: doctorResponse.doctors![index].address!,

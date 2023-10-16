@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:blood_pressure/src/core/remote/request/blood_request/blood_request.dart';
+import 'package:blood_pressure/src/core/remote/request/booking_request/booking_request.dart';
 import 'package:blood_pressure/src/core/remote/response/blood_response/blood_response.dart';
 import 'package:blood_pressure/src/core/remote/response/doctor_response/doctor_response.dart';
 import 'package:blood_pressure/src/core/remote/response/schedule_response.dart/schedule_response.dart';
@@ -10,13 +11,15 @@ import '../core/model/user.dart';
 import '../core/remote/request/login_request/login_request.dart';
 import '../core/remote/request/register_request/sign_up_request.dart';
 import '../core/remote/response/blood_response/get_blood_response.dart';
+import '../core/remote/response/booking_response/create_booking_reponse.dart';
+import '../core/remote/response/booking_response/get_booking_reponse.dart';
 import '../core/remote/response/login_reponse/login_response.dart';
 import '../core/remote/response/register_reponse/sign_up_response.dart';
 
 part 'api_service.g.dart';
 
 //Base address
-@RestApi(baseUrl: 'http://192.168.1.11:8000')
+@RestApi(baseUrl: 'http://192.168.1.14:8000')
 // @RestApi(baseUrl: 'http://45.117.170.206:8085')
 
 abstract class ApiService {
@@ -78,5 +81,15 @@ abstract class ApiService {
   Future<ScheduleResponse> getSchedule({
     @Query('workDate') required String? workDate,
     @Path("id") required int? doctorId,
+  });
+
+//api booking
+  @POST('/api/booking')
+  Future<CreateBookingResponse> createBooking(@Body() BookingRequest createBooking);
+
+  @GET('/api/booking/{id}')
+  Future<GetBookingResponse> getBooking({
+    @Header("Authorization") required String? auth,
+    @Path("id") required int? id,
   });
 }

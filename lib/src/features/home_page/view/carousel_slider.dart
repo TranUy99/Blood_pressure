@@ -11,10 +11,12 @@ class CarouselSliderBanner extends StatefulWidget {
 
 class _CarouselSliderBannerState extends State<CarouselSliderBanner> {
   final imageBanner = [
-    const Image(image: AssetImage('assets/images/banner0.jpg'), fit: BoxFit.fill),
-    const Image(image: AssetImage('assets/images/banner1.jpg'), fit: BoxFit.fill),
-    const Image(image: AssetImage('assets/images/banner2.gif'), fit: BoxFit.fill),
-    const Image(image: AssetImage('assets/images/banner1.jpg'), fit: BoxFit.fill)
+    const Image(image: AssetImage('assets/images/blood-pressure-chart1.jpg'), fit: BoxFit.fill),
+    const Image(image: AssetImage('assets/images/h3_high-blood-pressure.jpg'), fit: BoxFit.fill),
+    const Image(
+        image: AssetImage('assets/images/blood-pressure-measurement.webp'), fit: BoxFit.fill),
+    const Image(
+        image: AssetImage('assets/images/Blood-Pressure-Numbers_Newsroom.jpg'), fit: BoxFit.fill),
   ];
   int activeIndex = 0;
 
