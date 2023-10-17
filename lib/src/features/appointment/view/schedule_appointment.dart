@@ -13,12 +13,12 @@ class ScheduleAppointment extends StatefulWidget {
 }
 
 class _ScheduleAppointmentState extends State<ScheduleAppointment> {
-final BookingViewModel _bookingViewModel = BookingViewModel();
-late GetBookingResponse getBooking;
+  final BookingViewModel _bookingViewModel = BookingViewModel();
+  late GetBookingResponse getBooking;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: appBar(context, 'Schedule an appointment'),
+      appBar: appBar(context, 'Schedule an appointment'),
       body: FutureBuilder<GetBookingResponse>(
         future: _bookingViewModel.getBooking(),
         builder: (context, snapshot) {
@@ -57,7 +57,6 @@ late GetBookingResponse getBooking;
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-             
               ListView.builder(
                 scrollDirection: Axis.vertical,
                 physics: const NeverScrollableScrollPhysics(),
@@ -78,25 +77,56 @@ late GetBookingResponse getBooking;
                                   width: 120.0, // Độ rộng của các dấu ":"
                                   child: Text(
                                     "Name:",
-                                    style: TextStyle(
-                                        fontSize: 18, fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                                 Text(
-                                  "${getBooking.bookings![index].id}",
-                                  style:
-                                      const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                  "${getBooking.bookings![index].schedule!.doctor!.fullName}",
+                                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const SizedBox(
+                                  width: 120.0, // Độ rộng của các dấu ":"
+                                  child: Text(
+                                    "workDate:",
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Text(
+                                  "${getBooking.bookings![index].schedule!.workDate}",
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: kGreenColor),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const SizedBox(
+                                  width: 120.0, // Độ rộng của các dấu ":"
+                                  child: Text(
+                                    "Time:",
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Text(
+                                  "${getBooking.bookings![index].schedule!.time}",
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: kGreenColor),
                                 ),
                               ],
                             ),
                             const SizedBox(height: 4),
-                           
                           ],
                         ),
                       ),
-                      onTap: () {
-                   
-                      },
+                      onTap: () {},
                     ),
                   );
                 },

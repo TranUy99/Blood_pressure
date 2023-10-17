@@ -7,7 +7,7 @@ class DoctorDTO {
   @JsonKey(name: 'id')
   final int? id;
 
-  @JsonKey(name: 'email')
+  @JsonKey(name: 'z')
   final String? email;
 
  @JsonKey(name: 'fullName')

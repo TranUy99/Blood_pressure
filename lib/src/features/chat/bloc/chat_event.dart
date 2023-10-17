@@ -1,8 +1,12 @@
-part of 'chat_bloc.dart';
+abstract class DoctorEvent {}
 
-sealed class ChatEvent extends Equatable {
-  const ChatEvent();
+class FetchDoctorEvent extends DoctorEvent {}
 
-  @override
-  List<Object> get props => [];
+class GetScheduleEvent extends DoctorEvent {
+  final int? doctorId;
+  final String? workDate;
+  GetScheduleEvent({
+    required this.doctorId,
+    required this.workDate,
+  });
 }

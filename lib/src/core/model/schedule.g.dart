@@ -12,6 +12,9 @@ ScheduleDTO _$ScheduleDTOFromJson(Map<String, dynamic> json) => ScheduleDTO(
       workDate: json['workDate'] as String?,
       doctorId: json['doctorId'] as int?,
       statusId: json['statusId'] as int?,
+      doctor: json['doctor'] == null
+          ? null
+          : DoctorDTO.fromJson(json['doctor'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ScheduleDTOToJson(ScheduleDTO instance) =>
@@ -21,4 +24,5 @@ Map<String, dynamic> _$ScheduleDTOToJson(ScheduleDTO instance) =>
       'workDate': instance.workDate,
       'doctorId': instance.doctorId,
       'statusId': instance.statusId,
+      'doctor': instance.doctor,
     };

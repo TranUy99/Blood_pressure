@@ -1,10 +1,15 @@
-part of 'chat_bloc.dart';
+import '../../../core/remote/response/chat_response/chat_response.dart';
 
-sealed class ChatState extends Equatable {
-  const ChatState();
+abstract class ChatState {}
+
+class ChatLoadedState extends ChatState {
   
-  @override
-  List<Object> get props => [];
+  final ChatResponse getChatResponse;
+  ChatLoadedState(this.getChatResponse);
 }
 
-final class ChatInitial extends ChatState {}
+class ChatErrorState extends ChatState {
+  final String errorMessage;
+  ChatErrorState(this.errorMessage);
+}
+

@@ -1,13 +1,50 @@
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+// import 'package:rxdart/rxdart.dart';
+// import '../../../core/remote/response/doctor_response/doctor_response.dart';
 
-part 'chat_event.dart';
-part 'chat_state.dart';
+// class DoctorBloc {
+//   final BehaviorSubject<DoctorState> _doctorStateSubject = BehaviorSubject<DoctorState>();
 
-class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  ChatBloc() : super(ChatInitial()) {
-    on<ChatEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-  }
-}
+//   Stream<DoctorState> get doctorStateStream => _doctorStateSubject.stream;
+  
+//   final BehaviorSubject<ScheduleState> _scheduleStateSubject = BehaviorSubject<ScheduleState>();
+
+//   Stream<ScheduleState> get scheduleStateStream => _scheduleStateSubject.stream;
+//   Future<void> getDoctor(FetchDoctorEvent event) async {
+//     try {
+//       final DoctorResponse getDoctor = await DoctorService.getDoctor();
+     
+//       if (getDoctor.errCode == 0) {
+//         _doctorStateSubject.sink.add(DoctorLoadedState(getDoctor));
+//       } else {
+//         _doctorStateSubject.sink.add(DoctorErrorState("No  available"));
+//       }
+//     } catch (e) {
+//       _doctorStateSubject.sink.add(DoctorErrorState("No  available"));
+//     }
+//   }
+
+
+//   Future<void> getSchedule(DoctorEvent event) async {
+//        if (event is GetScheduleEvent) {
+//       final doctorId = event.doctorId;
+//       final workDate = event.workDate;
+  
+
+//       try {
+//         final scheduleResult = await DoctorService.getSchedule(doctorId, workDate);
+//         if (scheduleResult.errCode == 0) {
+//           _scheduleStateSubject.sink.add(SuccessScheduleState(scheduleResult));
+//         } else {
+//           _scheduleStateSubject.sink.add(ErrorScheduleState("error"));
+//         }
+//       } catch (e) {
+//         _scheduleStateSubject.add(ErrorScheduleState("error"));
+//       }
+//     }
+//   }
+
+//   void dispose() {
+//     _doctorStateSubject.close();
+//     _scheduleStateSubject.close();
+//   }
+// }

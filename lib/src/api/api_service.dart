@@ -14,6 +14,7 @@ import '../core/remote/response/blood_response/get_blood_response.dart';
 import '../core/remote/response/booking_response/create_booking_reponse.dart';
 import '../core/remote/response/booking_response/get_booking_reponse.dart';
 import '../core/remote/response/login_reponse/login_response.dart';
+import '../core/remote/response/message_response/get_message_response.dart';
 import '../core/remote/response/register_reponse/sign_up_response.dart';
 
 part 'api_service.g.dart';
@@ -92,4 +93,13 @@ abstract class ApiService {
     @Header("Authorization") required String? auth,
     @Path("id") required int? id,
   });
+
+
+//api message
+
+  @GET('/api/getMessagesByChat')
+  Future<GetMessageResponse> getMessage({
+    @Query('chatId') required int? chatId,
+  });
+
 }

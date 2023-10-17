@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../constant/color/color.dart';
 import '../../../core/remote/response/doctor_response/doctor_response.dart';
 import '../../doctor/view_model/doctor_view_model.dart';
-import '../widget/chat_page.dart';
+import 'message_page.dart';
 
 class Chat extends StatefulWidget {
   const Chat({super.key});
@@ -99,7 +99,7 @@ class _ChatState extends State<Chat> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  ChatPage(doctorId: doctorResponse.doctors![index].id,)),
+                              builder: (context) =>  MessagePage(doctorId: doctorResponse.doctors![index].id,)),
                         );
                       },
                     ),
